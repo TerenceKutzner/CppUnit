@@ -34,14 +34,14 @@ O CppUnit Adota uma programação orientada a objetos para criar os testes. Assi
                         CPPUNIT_TEST_SUITE_END();             // Finaliza a suíte de testes
 
                         public:
-                        void test_1()                                                        // Rotina do teste 1
+                        void test_1()                                                        
                         {
-                                CPPUNIT_ASSERT_EQUAL(Resultado_Esperado, funcao_testada());  // Verifica se o resultado está correto
+                                CPPUNIT_ASSERT_EQUAL(Resultado_Esperado, funcao_testada());  
                         }
 
-                        void test_2()                                                        // Rotina do teste 2
+                        void test_2()                                                        
                         {
-                                CPPUNIT_ASSERT_EQUAL(Resultado_Esperado, funcao_testada());  // Verifica se o resultado está correto
+                                CPPUNIT_ASSERT_EQUAL(Resultado_Esperado, funcao_testada());  
                         }
                 };
 
@@ -51,22 +51,22 @@ O CppUnit Adota uma programação orientada a objetos para criar os testes. Assi
 
 Feito a definição das classe e dos testes podemos escrever a int main. É nela que iremos definir a execução dos testes e quais dados serão coletados do teste. Assim definimos inicialmente um Objeto testresul ligado ao armazenamento dos resultados dos testes executados.
 
-                TestResult testresult;                          //cria objeto para armazenar os resultados dos testes executados
+                TestResult testresult;                         
 
 
 
 Para armazenar os testes temos 2 opções. Se desejamos apenas mostrar a quantidade de testes que falhou no fim da execução utilizamos o BriefTestProgressListener. Ele pode ser criado e associado ao test Result com as linhas de código abaixo:
 
-                BriefTestProgressListener progress;             //declara um objeto para guardar o progresso do teste
-                testresult.addListener(&progress);              //Adiciona progress como listener do objeto testresult. 
+                BriefTestProgressListener progress;         
+                testresult.addListener(&progress);             
 
 Essas configurações geram um output no seguinte formato:
 
 
 Agora se desejamos um relatório mais detalhadado, mostrando por exemplo com detalhes o teste que falhou utilizamos o objeto TestResultCollector:
 
-                TestResultCollector collectedresults;           //objeto usado para coletar e armazenar os resultados dos testes
-                testresult.addListener(&collectedresults);      //Adiciona collectedresults como listener do objeto testresult.
+                TestResultCollector collectedresults;         
+                testresult.addListener(&collectedresults);     
 
 Essas configurações geram um output no seguinte formato:
 
@@ -75,15 +75,15 @@ Essas configurações geram um output no seguinte formato:
 
 Definido o que será coletado, podemos partir para execução de fato do teste dentro da main. Ela é feita pela criação de um objeto TestRunner, associação dos testes a esse objeto e chamada da função .run que executa os testes e armazena os resultados no objeto result.
 
-                TestRunner testrunner;                                                  //Cria o objeto que executa os testes
+                TestRunner testrunner;                                                 
                 testrunner.addTest(TestFactoryRegistry::getRegistry().makeTest());
-                testrunner.run(testresult);                                             //Executa os testes e armazena os resultados em testresult
+                testrunner.run(testresult);                                             
 
 Executado os testes temos a opção de gravar os seus resultado em um arquivo .xml
 
-                ofstream xmlFileOut("nome_do_arquivo.xml");                      //Criar o arquivo XML 
-                XmlOutputter xmlOut(&collectedresults, xmlFileOut);              //Associa o arquivo aos resultados de teste
-                xmlOut.write();                                                  //escreve os resultados nesse teste
+                ofstream xmlFileOut("nome_do_arquivo.xml");                      
+                XmlOutputter xmlOut(&collectedresults, xmlFileOut);              
+                xmlOut.write();                                              
 
 
 ## Exemplo
