@@ -4,7 +4,7 @@ O CPPUnit é um framework de testes unitários para C++ baseado no Junit.
 
 
 
-##Intalação e pré Requisitos
+## Intalação e pré Requisitos
 
 Para instalar o CPP Unit no Linux - Ubuntu utilizar o comando abaixo dentro do seu repositório.
 
@@ -15,12 +15,12 @@ Para instalar o CPP Unit no Linux - Ubuntu utilizar o comando abaixo dentro do s
 
 A criação de uma suíte de testes utilizando o CppUnit, se resume a:
 
-        1. Criar um novo arquivo de teste;
-        2. Importar nesse arquivo as funções que devem ser testadas;
-        3. Importar as bibliotecas do CppUnit;
-        4. Escrever a Suite de Testes;
-        5. Compilar a Suite utilizando o GPP.
-        6. Executar a Suite.
+1. Criar um novo arquivo de teste;
+2. Importar nesse arquivo as funções que devem ser testadas;
+3. Importar as bibliotecas do CppUnit;
+4. Escrever a Suite de Testes;
+5. Compilar a Suite utilizando o GPP.
+6. Executar a Suite.
 
 O CppUnit Adota uma programação orientada a objetos para criar os testes. Assim, para começar deve-se definir uma classe de teste. É nessa classe onde iremos escrever todas as rotinas de testes. Definido a classe podemos iniciar a definição dos testes. Para isso são criadas funções. Para padronizar sempre começamos o nome da função de teste com "test_". Em seguida dentro dessas funções definimos os elementos do teste. Entre esses elementos o principal é a chamada de CPPUNIT_ASSERT_EQUAL(), que irá fazer a comparação do valor esperado do teste com o valor retornado pela função.
 
@@ -92,10 +92,9 @@ Para utilizar o makefile utilizar os comandos para compilar e executar os testes
 
 ### Aspectos Positivos da Ferramenta
 
+        - Execução automática dos testes;
         - Relativamente fácil de implementar os testes;
         - Exporta os resultados para .xml
-
-
 
 ### Aspectos Negativos da Ferramenta
 
