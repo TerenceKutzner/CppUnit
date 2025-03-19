@@ -32,12 +32,12 @@ O CppUnit Adota uma programação orientada a objetos para criar os testes. Assi
                         CPPUNIT_TEST_SUITE_END();             // Finaliza a suíte de testes
 
                         public:
-                        void test_maximo_1()                  // Rotina do teste 1
+                        void test_1()                                                        // Rotina do teste 1
                         {
                                 CPPUNIT_ASSERT_EQUAL(Resultado_Esperado, funcao_testada());  // Verifica se o resultado está correto
                         }
 
-                        void test_maximo_2()                  // Rotina do teste 2
+                        void test_2()                                                        // Rotina do teste 2
                         {
                                 CPPUNIT_ASSERT_EQUAL(Resultado_Esperado, funcao_testada());  // Verifica se o resultado está correto
                         }
@@ -92,12 +92,12 @@ Para utilizar o makefile utilizar os comandos para compilar e executar os testes
 
 ### Aspectos Positivos da Ferramenta
 
-        - Execução automática dos testes;
-        - Relativamente fácil de implementar os testes;
-        - Exporta os resultados para .xml
+- Execução automática dos testes;
+- Relativamente fácil de implementar os testes;
+- Exporta os resultados para .xml
 
 ### Aspectos Negativos da Ferramenta
 
-        - Ela não mostra cobertura de código (para fazer isso é necessário integrar por exemplo o lcov);
-        - Existe uma curva inicial de aprendizado para utilizar, porém depois que aprende fica fácil.
+- Ela não mostra cobertura de código;
+- Existe uma curva inicial de aprendizado para utilizar, porém depois que aprende fica fácil.
         

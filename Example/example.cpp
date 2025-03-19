@@ -1,5 +1,5 @@
 #include <string>
-#include "example_1.h"
+#include "example.h"
 
 
 int maximo(int a, int b) 

@@ -13,47 +13,44 @@
 #include <cppunit/TextTestProgressListener.h>
 #include <cppunit/TestResultCollector.h>
 
-
 #include <iostream>
 #include <string>
 #include <fstream>
 
-#include "example_1.h"  // Este cabeçalho contém a definição da função 'maximo'
 
 using namespace CPPUNIT_NS;  //evita de ter que colocar CPPUNIT_NS::
 using namespace std;
 
-class test_maximo : public TestFixture {
-    CPPUNIT_TEST_SUITE(test_maximo);    // Inicia a suíte de testes
-    CPPUNIT_TEST(test_maximo_1);        // Registra o teste 
-    CPPUNIT_TEST(test_maximo_2);        // Registra o teste 
-    CPPUNIT_TEST(test_maximo_3);        // Registra o teste 
-    CPPUNIT_TEST_SUITE_END();           // Finaliza a suíte de testes
+class test_meuTeste : public TestFixture                                     //definição da Classe de teste
+{
+        CPPUNIT_TEST_SUITE(test_meuTeste);                                   // Inicia a suíte de testes
+        CPPUNIT_TEST(test_1);                                                // "Registra" o teste 1
+        CPPUNIT_TEST(test_2);                                                // "Registra" o teste 2 
+        CPPUNIT_TEST_SUITE_END();                                            // Finaliza a suíte de testes
 
-public:
-    void test_maximo_1() {
-        CPPUNIT_ASSERT_EQUAL(10, maximo(5, 10));  // Verifica se o resultado está correto
-    }
+        public:
+        void test_1()                                                        // Rotina do teste 1
+        {
+                CPPUNIT_ASSERT_EQUAL(Resultado_Esperado, funcao_testada());  // Verifica se o resultado está correto
+        }
 
-    void test_maximo_2() {
-        CPPUNIT_ASSERT_EQUAL(3, maximo(3, 3));  // Verifica se o resultado está correto
-    }
-
-    void test_maximo_3() {
-        CPPUNIT_ASSERT_EQUAL(0, maximo(3, 3));  // Verifica se o resultado está correto
-    }
+        void test_2()                                                        // Rotina do teste 2
+        {
+                CPPUNIT_ASSERT_EQUAL(Resultado_Esperado, funcao_testada());  // Verifica se o resultado está correto
+        }
 };
 
-CPPUNIT_TEST_SUITE_REGISTRATION(test_maximo);
+CPPUNIT_TEST_SUITE_REGISTRATION(test_meuTeste);
 
-int main() {
+int main() 
+{
     
     //Configuracoes para armazenar os resultados dos testes
     TestResult testresult;                          //cria objeto para armazenar os resultados dos testes executados
 
     //configuracoes para armazenar o progresso por teste
-    //BriefTestProgressListener progress;             //declara um objeto para guardar o progresso do teste
-    //testresult.addListener(&progress);              //Adiciona progress como istener do objeto testresult. 
+    BriefTestProgressListener progress;             //declara um objeto para guardar o progresso do teste
+    testresult.addListener(&progress);              //Adiciona progress como istener do objeto testresult. 
 
 
     //configuracoes para armazenar o resultado por teste - util para saber informacoes do teste que falhou
@@ -71,7 +68,7 @@ int main() {
     textOutputter.write();
 
     //para exportar os resultados em um arquivo XML
-    ofstream xmlFileOut("example_1_test.xml");                      //Criar o arquivo XML 
+    ofstream xmlFileOut("example_1.xml");                           //Criar o arquivo XML 
     XmlOutputter xmlOut(&collectedresults, xmlFileOut);             //Associa o arquivo aos resultados de teste
     xmlOut.write();                                                 //escreve os resultados nesse teste
 
