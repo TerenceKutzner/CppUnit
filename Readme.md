@@ -22,6 +22,8 @@ A criação de uma suíte de testes utilizando o CppUnit, se resume a:
 5. Compilar a Suite utilizando o GPP.
 6. Executar a Suite.
 
+### Criação da Classe de Testes
+
 O CppUnit Adota uma programação orientada a objetos para criar os testes. Assim, para começar deve-se definir uma classe de teste. É nessa classe onde iremos escrever todas as rotinas de testes. Definido a classe podemos iniciar a definição dos testes. Para isso são criadas funções. Para padronizar sempre começamos o nome da função de teste com "test_". Em seguida dentro dessas funções definimos os elementos do teste. Entre esses elementos o principal é a chamada de CPPUNIT_ASSERT_EQUAL(), que irá fazer a comparação do valor esperado do teste com o valor retornado pela função.
 
                 class test_meuTeste : public TestFixture      //definição da Classe de teste
@@ -44,17 +46,30 @@ O CppUnit Adota uma programação orientada a objetos para criar os testes. Assi
                 };
 
 
+
+### Programação na Main()
+
 Feito a definição das classe e dos testes podemos escrever a int main. É nela que iremos definir a execução dos testes e quais dados serão coletados do teste. Assim definimos inicialmente um Objeto testresul ligado ao armazenamento dos resultados dos testes executados.
 
-                //Configuracoes para armazenar os resultados dos testes
                 TestResult testresult;                          //cria objeto para armazenar os resultados dos testes executados
 
-Se desejamos armazenar de forma detalhada 
 
 
-                //configuracoes para armazenar o progresso por teste
-                //BriefTestProgressListener progress;             //declara um objeto para guardar o progresso do teste
-                //testresult.addListener(&progress);              //Adiciona progress como istener do objeto testresult. 
+Para armazenar os testes temos 2 opções. Se desejamos apenas mostrar a quantidade de testes que falhou no fim da execução utilizamos o BriefTestProgressListener. Ele pode ser criado e associado ao test Result com as linhas de código abaixo:
+
+                BriefTestProgressListener progress;             //declara um objeto para guardar o progresso do teste
+                testresult.addListener(&progress);              //Adiciona progress como listener do objeto testresult. 
+
+Essas configurações geram um output no seguinte formato:
+
+
+Agora se desejamos um relatório mais detalhadado, mostrando por exemplo com detalhes o teste que falhou utilizamos o objeto TestResultCollector:
+
+                TestResultCollector collectedresults;           //objeto usado para coletar e armazenar os resultados dos testes
+                testresult.addListener(&collectedresults);      //Adiciona collectedresults como listener do objeto testresult.
+
+Essas configurações geram um output no seguinte formato:
+
 
 
 
