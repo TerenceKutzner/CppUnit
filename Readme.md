@@ -1,4 +1,4 @@
-##Cpp Unit
+## Cpp Unit
 
 O CPPUnit é um framework de testes unitários para C++ baseado no Junit. 
 
@@ -11,7 +11,7 @@ Para instalar o CPP Unit no Linux - Ubuntu utilizar o comando abaixo dentro do s
         sudo apt update
         sudo apt install libcppunit-dev
 
-##Tutorial
+## Tutorial
 
 A criação de uma suíte de testes utilizando o CppUnit, se resume a:
 
@@ -71,7 +71,7 @@ Executado os testes temos a opção de gravar os seus resultado em um arquivo .x
                 xmlOut.write();                                                  //escreve os resultados nesse teste
 
 
-##Exemplo
+## Exemplo
 
 Para demonstrar a ferramenta foi criado um exemplo básico de um conjunto de 3 funções: Máximo, ParImpar e fatorial. Ele encontra-se com a seguinte estrutrura
 
@@ -88,14 +88,16 @@ Para utilizar o makefile utilizar os comandos para compilar e executar os testes
 
 
 
-##Aspectos Positivos da Ferramenta
+## Análise da Ferramenta
+
+### Aspectos Positivos da Ferramenta
 
         - Relativamente fácil de implementar os testes;
         - Exporta os resultados para .xml
 
 
 
-##Aspectos Negativos da Ferramenta
+### Aspectos Negativos da Ferramenta
 
         - Ela não mostra cobertura de código (para fazer isso é necessário integrar por exemplo o lcov);
         - Existe uma curva inicial de aprendizado para utilizar, porém depois que aprende fica fácil.
