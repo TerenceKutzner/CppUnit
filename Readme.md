@@ -75,16 +75,16 @@ Executado os testes temos a opção de gravar os seus resultado em um arquivo .x
 
 Para demonstrar a ferramenta foi criado um exemplo básico de um conjunto de 3 funções: Máximo, ParImpar e fatorial. Ele encontra-se com a seguinte estrutrura
 
-        - example_1.cpp : contém o código com as funções a ser testado
-        - example_1.h : header para o código com as funções
-        - test_example:1.cpp : contém o código com a rotina de testes
-        - Makefile
+- example_1.cpp : contém o código com as funções a ser testado
+- example_1.h : header para o código com as funções
+- test_example:1.cpp : contém o código com a rotina de testes
+- Makefile
 
 Para utilizar o makefile utilizar os comandos para compilar e executar os testes.
 
-        - make clean
-        - make 
-        - make run 
+                make clean
+                make 
+                make run 
 
 
 
