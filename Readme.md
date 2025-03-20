@@ -49,28 +49,44 @@ O CppUnit Adota uma programação orientada a objetos para criar os testes. Assi
 
 ### Programação na Main()
 
+Efetivamente antes da main deve-se registra a classe de testes no CPPUnit utilizando:
+
+                CPPUNIT_TEST_SUITE_REGISTRATION(test_meuTeste);
+
+
 Feito a definição das classe e dos testes podemos escrever a int main. É nela que iremos definir a execução dos testes e quais dados serão coletados do teste. Assim definimos inicialmente um Objeto testresul ligado ao armazenamento dos resultados dos testes executados.
 
-                TestResult testresult;                         
+                TestResult testresult;                    //objeto para armazenar os resultados
+                TestResultCollector collectedresults;     //objeto usado para coletar os resultados 
+                testresult.addListener(&collectedresults);                              
 
 
+Por padrão o CPPUnit vai mostrar apenas um resumo com quais testes falaharam, e porque falharam. Abaixo temos um exemplo de um output no terminal:
 
-Para armazenar os testes temos 2 opções. Se desejamos apenas mostrar a quantidade de testes que falhou no fim da execução utilizamos o BriefTestProgressListener. Ele pode ser criado e associado ao test Result com as linhas de código abaixo:
+                !!!FAILURES!!!
+                Test Results:
+                Run:  6   Failures: 1   Errors: 0
+
+
+                1) test: test_maximo::test_maximo_3 (F) line: 47 test_example.cpp
+                equality assertion failed
+                - Expected: 0
+                - Actual  : 3
+
+
+Se desejamos mostrar uma lista com todos os testes podemos utilizar o BriefTestProgressListener. Ele pode ser criado e associado ao test Result com as linhas de código abaixo:
 
                 BriefTestProgressListener progress;         
                 testresult.addListener(&progress);             
 
-Essas configurações geram um output no seguinte formato:
+Essas configurações permitem gerar o output abaixo com o nome do teste e o status, sendo o "OK" interpretado como passou no teste e "assertion" como falhou no teste:
 
-
-Agora se desejamos um relatório mais detalhadado, mostrando por exemplo com detalhes o teste que falhou utilizamos o objeto TestResultCollector:
-
-                TestResultCollector collectedresults;         
-                testresult.addListener(&collectedresults);     
-
-Essas configurações geram um output no seguinte formato:
-
-
+                test_maximo::test_maximo_1 : OK
+                test_maximo::test_maximo_2 : OK
+                test_maximo::test_maximo_3 : assertion
+                test_maximo::test_fatorial_1 : OK
+                test_maximo::test_fatorial_2 : OK
+                test_maximo::test_fatorial_3 : OK
 
 
 Definido o que será coletado, podemos partir para execução de fato do teste dentro da main. Ela é feita pela criação de um objeto TestRunner, associação dos testes a esse objeto e chamada da função .run que executa os testes e armazena os resultados no objeto result.
@@ -79,7 +95,13 @@ Definido o que será coletado, podemos partir para execução de fato do teste d
                 testrunner.addTest(TestFactoryRegistry::getRegistry().makeTest());
                 testrunner.run(testresult);                                             
 
-Executado os testes temos a opção de gravar os seus resultado em um arquivo .xml
+Após chamar os comando que executam os testes temos 2 opções para observar os resultados dos testes. A primeira é de mostrar os resultados no terminal. Para isso precisamos utilizar o código abaixo:
+
+                TextOutputter textOutputter(&collectedresults, cout);
+                textOutputter.write();
+
+
+A 2° opção é de gravar os seus resultado em um arquivo .xml com o código abaixo:
 
                 ofstream xmlFileOut("nome_do_arquivo.xml");                      
                 XmlOutputter xmlOut(&collectedresults, xmlFileOut);              

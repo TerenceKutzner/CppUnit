@@ -40,37 +40,33 @@ class test_meuTeste : public TestFixture                                     //d
         }
 };
 
-CPPUNIT_TEST_SUITE_REGISTRATION(test_meuTeste);
+CPPUNIT_TEST_SUITE_REGISTRATION(test_meuTeste);     //registra a classe de testes no CPPUnit
 
 int main() 
 {
-    
     //Configuracoes para armazenar os resultados dos testes
     TestResult testresult;                          //cria objeto para armazenar os resultados dos testes executados
-
-    //configuracoes para armazenar o progresso por teste
-    BriefTestProgressListener progress;             //declara um objeto para guardar o progresso do teste
-    testresult.addListener(&progress);              //Adiciona progress como istener do objeto testresult. 
-
-
-    //configuracoes para armazenar o resultado por teste - util para saber informacoes do teste que falhou
     TestResultCollector collectedresults;           //objeto usado para coletar e armazenar os resultados dos testes
     testresult.addListener(&collectedresults);      //Adiciona collectedresults como listener do objeto testresult.
 
+    //armazenar a lista de testes
+    BriefTestProgressListener progress;             //declara um objeto para guardar o progresso do teste
+    testresult.addListener(&progress);              //Adiciona progress como istener do objeto testresult. 
 
     //Responsável por executar os testes
     TestRunner testrunner;                                                  //Cria o objeto que executa os testes
     testrunner.addTest(TestFactoryRegistry::getRegistry().makeTest());
     testrunner.run(testresult);                                             //Executa os testes e armazena os resultados em testresult
 
-
+    //mostrar os resultados no terminal
     TextOutputter textOutputter(&collectedresults, cout);
     textOutputter.write();
 
     //para exportar os resultados em um arquivo XML
-    ofstream xmlFileOut("example_1.xml");                           //Criar o arquivo XML 
+    ofstream xmlFileOut("example_1_test.xml");                      //Criar o arquivo XML 
     XmlOutputter xmlOut(&collectedresults, xmlFileOut);             //Associa o arquivo aos resultados de teste
     xmlOut.write();                                                 //escreve os resultados nesse teste
 
-    return collectedresults.wasSuccessful();
+    return collectedresults.wasSuccessful()? 0 : 1;
+
 }
