@@ -25,14 +25,14 @@ using namespace CPPUNIT_NS;  //evita de ter que colocar CPPUNIT_NS::
 using namespace std;
 
 class test_maximo : public TestFixture {
-    CPPUNIT_TEST_SUITE(test_maximo);    // Inicia a suíte de testes
-    CPPUNIT_TEST(test_maximo_1);        // Registra o teste 
-    CPPUNIT_TEST(test_maximo_2);        // Registra o teste 
-    CPPUNIT_TEST(test_maximo_3);        // Registra o teste 
+    CPPUNIT_TEST_SUITE(test_maximo);      // Inicia a suíte de testes
+    CPPUNIT_TEST(test_maximo_1);          // Registra o teste 
+    CPPUNIT_TEST(test_maximo_2);          // Registra o teste 
+    CPPUNIT_TEST(test_maximo_3);          // Registra o teste 
     CPPUNIT_TEST(test_fatorial_1);        // Registra o teste 
     CPPUNIT_TEST(test_fatorial_2);        // Registra o teste 
     CPPUNIT_TEST(test_fatorial_3);        // Registra o teste 
-    CPPUNIT_TEST_SUITE_END();           // Finaliza a suíte de testes
+    CPPUNIT_TEST_SUITE_END();             // Finaliza a suíte de testes
 
 public:
     void test_maximo_1() {
@@ -58,23 +58,20 @@ public:
     void test_fatorial_3() {
         CPPUNIT_ASSERT_EQUAL(120, fatorial(5));  // Verifica se o resultado está correto
     }
-
-
 };
 
 CPPUNIT_TEST_SUITE_REGISTRATION(test_maximo);
 
-int main() {
-    
+int main() 
+{
     //Configuracoes para armazenar os resultados dos testes
     TestResult testresult;                          //cria objeto para armazenar os resultados dos testes executados
     TestResultCollector collectedresults;           //objeto usado para coletar e armazenar os resultados dos testes
     testresult.addListener(&collectedresults);      //Adiciona collectedresults como listener do objeto testresult.
 
     //armazenar a lista de testes
-    //BriefTestProgressListener progress;             //declara um objeto para guardar o progresso do teste
-    //testresult.addListener(&progress);              //Adiciona progress como istener do objeto testresult. 
-
+    BriefTestProgressListener progress;             //declara um objeto para guardar o progresso do teste
+    testresult.addListener(&progress);              //Adiciona progress como istener do objeto testresult. 
 
     //Responsável por executar os testes
     TestRunner testrunner;                                                  //Cria o objeto que executa os testes
@@ -85,14 +82,10 @@ int main() {
     TextOutputter textOutputter(&collectedresults, cout);
     textOutputter.write();
 
-
     //para exportar os resultados em um arquivo XML
-    //ofstream xmlFileOut("example_1_test.xml");                      //Criar o arquivo XML 
-    //XmlOutputter xmlOut(&collectedresults, xmlFileOut);             //Associa o arquivo aos resultados de teste
-    //xmlOut.write();                                                 //escreve os resultados nesse teste
-
+    ofstream xmlFileOut("example_1_test.xml");                      //Criar o arquivo XML 
+    XmlOutputter xmlOut(&collectedresults, xmlFileOut);             //Associa o arquivo aos resultados de teste
+    xmlOut.write();                                                 //escreve os resultados nesse teste
 
     return collectedresults.wasSuccessful()? 0 : 1;
-
-    return 0;
 }
