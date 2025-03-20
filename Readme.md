@@ -1,8 +1,6 @@
-## Cpp Unit
+## CppUnit
 
-O CPPUnit é um framework de testes unitários para C++ baseado no Junit. 
-
-
+O [CppUnit](https://cppunit.sourceforge.net/doc/cvs/index.html) é um framework de testes unitários para C++ baseado no JUnit para Java. 
 
 ## Intalação e pré Requisitos
 
@@ -19,7 +17,7 @@ A criação de uma suíte de testes utilizando o CppUnit, se resume a:
 2. Importar nesse arquivo as funções que devem ser testadas;
 3. Importar as bibliotecas do CppUnit;
 4. Escrever a Suite de Testes;
-5. Compilar a Suite utilizando o GPP.
+5. Compilar a Suite utilizando o Gpp.
 6. Executar a Suite.
 
 ### Criação da Classe de Testes
