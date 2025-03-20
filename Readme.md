@@ -110,11 +110,11 @@ A 2° opção é de gravar os seus resultado em um arquivo .xml com o código ab
 
 ## Exemplo
 
-Para demonstrar a ferramenta foi criado um exemplo básico de um conjunto de 3 funções: Máximo, ParImpar e fatorial. Ele encontra-se com a seguinte estrutrura
+Para demonstrar a ferramenta foi criado um exemplo básico de um conjunto de 2 funções: Máximo e fatorial. Ele encontra-se com a seguinte estrutrura
 
-- example_1.cpp : contém o código com as funções a ser testado
-- example_1.h : header para o código com as funções
-- test_example:1.cpp : contém o código com a rotina de testes
+- example.cpp : contém o código com as funções a ser testado
+- example.h : header para o código com as funções
+- test_example:.cpp : contém o código com a rotina de testes
 - Makefile
 
 Para utilizar o makefile utilizar os comandos para compilar e executar os testes.
