@@ -44,7 +44,7 @@ public:
     }
 
     void test_maximo_3() {
-        CPPUNIT_ASSERT_EQUAL(0, maximo(3, 3));  // Verifica se o resultado está correto
+        CPPUNIT_ASSERT_EQUAL(10, maximo(3, 3));  // Verifica se o resultado está correto
     }
 
     void test_fatorial_1() {
@@ -60,7 +60,7 @@ public:
     }
 };
 
-CPPUNIT_TEST_SUITE_REGISTRATION(test_maximo);
+CPPUNIT_TEST_SUITE_REGISTRATION(test_maximo);  // faz o registro da classe criada no CppUnit
 
 int main() 
 {
